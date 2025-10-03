@@ -1,9 +1,9 @@
 {
-  "name": "Chatwoot",
-  "description": "Chatwoot is a customer support tool for instant messaging channels",
-  "website": "https://www.chatwoot.com/",
-  "repository": "https://github.com/chatwoot/chatwoot",
-  "logo": "https://app.chatwoot.com/brand-assets/logo_thumbnail.svg",
+  "name": "ChatMed",
+  "description": "ChatMed es una herramienta personalizada para atención al paciente por canales de mensajería instantánea",
+  "website": "https://chat.consulmed.me",
+  "repository": "https://github.com/jorgeluisdevera/chatmed",
+  "logo": "https://chat.consulmed.me/assets/logo_thumbnail.svg",
   "keywords": [
     "live chat",
     "customer support",
@@ -27,7 +27,7 @@
     },
     "FRONTEND_URL": {
       "description": "Public root URL of the Chatwoot installation. This will be used in the emails.",
-      "value": "https://CHANGE.herokuapp.com"
+      "value": "https://chat.consulmed.me"
     },
     "INSTALLATION_ENV": {
       "description": "Installation method used for Chatwoot.",

@@ -4,23 +4,23 @@ describe('#MessageFormatter', () => {
   describe('content with links', () => {
     it('should format correctly', () => {
       const message =
-        'Chatwoot is an opensource tool. [Chatwoot](https://www.chatwoot.com)';
+        'Chatmed is an opensource tool. [Chatmed](http://chat.consulmed.me)';
       expect(new MessageFormatter(message).formattedMessage).toMatch(
-        '<p>Chatwoot is an opensource tool. <a href="https://www.chatwoot.com" class="link" rel="noreferrer noopener nofollow" target="_blank">Chatwoot</a></p>'
+        '<p>Chatmed is an opensource tool. <a href="http://chat.consulmed.me" class="link" rel="noreferrer noopener nofollow" target="_blank">Chatmed</a></p>'
       );
     });
     it('should format correctly', () => {
       const message =
-        'Chatwoot is an opensource tool. https://www.chatwoot.com';
+        'Chatmed is an opensource tool. http://chat.consulmed.me';
       expect(new MessageFormatter(message).formattedMessage).toMatch(
-        '<p>Chatwoot is an opensource tool. <a href="https://www.chatwoot.com" class="link" rel="noreferrer noopener nofollow" target="_blank">https://www.chatwoot.com</a></p>'
+        '<p>Chatmed is an opensource tool. <a href="http://chat.consulmed.me" class="link" rel="noreferrer noopener nofollow" target="_blank">http://chat.consulmed.me</a></p>'
       );
     });
     it('should not convert template variables to links when linkify is disabled', () => {
-      const message = 'Hey {{customer.name}}, check https://chatwoot.com';
+      const message = 'Hey {{customer.name}}, check http://chat.consulmed.me';
       const formatter = new MessageFormatter(message, false, false, false);
       expect(formatter.formattedMessage).toMatch(
-        '<p>Hey {{customer.name}}, check https://chatwoot.com</p>'
+        '<p>Hey {{customer.name}}, check http://chat.consulmed.me</p>'
       );
     });
   });
@@ -38,32 +38,32 @@ describe('#MessageFormatter', () => {
   describe('content with image and has "cw_image_height" query at the end of URL', () => {
     it('should set image height correctly', () => {
       const message =
-        'Chatwoot is an opensource tool. ![](http://chatwoot.com/chatwoot.png?cw_image_height=24px)';
+        'Chatmed is an opensource tool. ![](http://chat.consulmed.me/chatwoot.png?cw_image_height=24px)';
       expect(new MessageFormatter(message).formattedMessage).toMatch(
-        '<p>Chatwoot is an opensource tool. <img src="http://chatwoot.com/chatwoot.png?cw_image_height=24px" alt="" style="height: 24px;" /></p>'
+        '<p>Chatmed is an opensource tool. <img src="http://chat.consulmed.me/chatwoot.png?cw_image_height=24px" alt="" style="height: 24px;" /></p>'
       );
     });
 
     it('should set image height correctly if its original size', () => {
       const message =
-        'Chatwoot is an opensource tool. ![](http://chatwoot.com/chatwoot.png?cw_image_height=auto)';
+        'Chatmed is an opensource tool. ![](http://chat.consulmed.me/chatwoot.png?cw_image_height=auto)';
       expect(new MessageFormatter(message).formattedMessage).toMatch(
-        '<p>Chatwoot is an opensource tool. <img src="http://chatwoot.com/chatwoot.png?cw_image_height=auto" alt="" style="height: auto;" /></p>'
+        '<p>Chatmed is an opensource tool. <img src="http://chat.consulmed.me/chatwoot.png?cw_image_height=auto" alt="" style="height: auto;" /></p>'
       );
     });
 
     it('should not set height', () => {
       const message =
-        'Chatwoot is an opensource tool. ![](http://chatwoot.com/chatwoot.png)';
+        'Chatmed is an opensource tool. ![](http://chat.consulmed.me/chatwoot.png)';
       expect(new MessageFormatter(message).formattedMessage).toMatch(
-        '<p>Chatwoot is an opensource tool. <img src="http://chatwoot.com/chatwoot.png" alt="" /></p>'
+        '<p>Chatmed is an opensource tool. <img src="http://chat.consulmed.me/chatwoot.png" alt="" /></p>'
       );
     });
   });
 
   describe('tweets', () => {
     it('should return the same string if not tags or @mentions', () => {
-      const message = 'Chatwoot is an opensource tool';
+      const message = 'Chatmed is an opensource tool';
       expect(new MessageFormatter(message).formattedMessage).toMatch(message);
     });
 
@@ -89,7 +89,7 @@ describe('#MessageFormatter', () => {
 
   describe('private notes', () => {
     it('should return the same string if not tags or @mentions', () => {
-      const message = 'Chatwoot is an opensource tool';
+      const message = 'Chatmed is an opensource tool';
       expect(new MessageFormatter(message).formattedMessage).toMatch(message);
     });
 
@@ -112,9 +112,9 @@ describe('#MessageFormatter', () => {
   describe('plain text content', () => {
     it('returns the plain text without HTML', () => {
       const message =
-        '<b>Chatwoot is an opensource tool. https://www.chatwoot.com</b>';
+        '<b>Chatmed is an opensource tool. http://chat.consulmed.me</b>';
       expect(new MessageFormatter(message).plainText).toMatch(
-        'Chatwoot is an opensource tool. https://www.chatwoot.com'
+        'Chatmed is an opensource tool. http://chat.consulmed.me'
       );
     });
   });
